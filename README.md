@@ -1,6 +1,6 @@
 # Video durations from Youtube channels
 
-This script answer the question: *How long would it take to see all the videos from a channel?*
+This script answers the question: *How long would it take to see all the videos from a channel?*
 
 ## How to use
 
