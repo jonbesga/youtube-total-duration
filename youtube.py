@@ -1,8 +1,9 @@
 import json
 import re
 from apiclient.discovery import build
+import os
 
-from config import YOUTUBE_API_KEY
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 service = None
 
@@ -43,8 +44,9 @@ def get_channel_duration(data):
         filters = dict()
         filters['id'] = channel['id'] if 'id' in channel else None
         filters['forUsername'] = channel['forUsername'] if 'forUsername' in channel else None
-
-        uploads_id = get_uploads_playlist_id(id=filters['id'], forUsername=filters['forUsername'])
+        uploads_id = channel.get('is_playlist')
+        if not uploads_id:
+            uploads_id = get_uploads_playlist_id(id=filters['id'], forUsername=filters['forUsername'])
         videos = get_playlist_videos(uploads_id)
         durations = []
         for video in videos:

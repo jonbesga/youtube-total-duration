@@ -1,5 +1,5 @@
 from flask import Flask, request
-from youtube import get_channel_duration
+from youtube import get_channel_duration, get_playlist_duration
 import json
 
 app = Flask(__name__)
